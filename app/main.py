@@ -2,6 +2,7 @@ from models.user import Aluno
 from services.user_services import UserService
 from repositories.user_repository import UserRepository
 from config.connection import Session
+import os
 
 
 def main():
@@ -9,6 +10,8 @@ def main():
     repository = UserRepository(session)
     service = UserService(repository)
 
+    # Solicitando dados do usuario
+    print("\nAdicionando usuário: ")
     for i in range(2):
         ra = input("Digite o seu ra: ")
         nome = input("Digite a seu nome: ")
@@ -20,12 +23,14 @@ def main():
             ra=ra, name=nome, last_name=sobrenome, email=email, password=senha
         )
 
-    print("\nListando todos os usuários.")
+    # Exibindo todos os usuários na tabela usuários do banco de dados.
+    print("\nListando todos os usuários: ")
     alunos = service.list_all_users()
 
     for aluno in alunos:
-        print(f"{aluno.name} - {aluno.email}")
+        print(f"R.A.: {aluno.ra} - Nome: {aluno.name} - Email: {aluno.email} - Senha: {aluno.password}")
 
 
 if __name__ == "__main__":
+    os.system("cls || clear")
     main()
