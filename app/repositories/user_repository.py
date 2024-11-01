@@ -8,7 +8,7 @@ class UserRepository:
     def save_user(self, user: Aluno):
         self.session.add(user)
         self.session.commit()
-        self.session.refresh()
+        self.session.refresh(user)
 
     def search_user_by_email(self, email: str):
         return self.session.query(Aluno).filter_by(email=email).first()
@@ -16,7 +16,7 @@ class UserRepository:
     def delete_user(self, user: Aluno):
         self.session.delete(user)
         self.session.commit()
-        self.session.refresh()
+        self.session.refresh(user)
 
     def list_all_users(self):
         return self.session.query(Aluno).all()
