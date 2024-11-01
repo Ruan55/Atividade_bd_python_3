@@ -7,6 +7,7 @@ session = Session()
 
 Base = declarative_base()
 
+
 class Aluno(Base):
     # Definindo características da tabela no banco de dados.
     __tablename__ = "alunos"
@@ -19,12 +20,13 @@ class Aluno(Base):
     password = Column(String(250))
 
     # Definindo características da classe.
-    def __init__(self,ra: int , name: str, last_name: str, email: str, password: str):
+    def __init__(self, ra: int, name: str, last_name: str, email: str, password: str):
         self.ra = ra
         self.name = name
         self.last_name = last_name
         self.email = email
         self.password = password
+
 
 # Criando tabela no banco de dados.
 Base.metadata.create_all(bind=db)

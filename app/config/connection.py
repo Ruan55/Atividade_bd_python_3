@@ -17,6 +17,7 @@ db = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=db)
 session = Session()
 
+
 # Gerenciando conexão com banco de dados.
 @contextmanager
 def get_db():
